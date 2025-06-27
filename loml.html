@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NetWish - Cala's Birthday!</title>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Roboto&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/lightbox2@2/dist/css/lightbox.min.css" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      background-color: #141414;
+      color: white;
+      font-family: 'Roboto', sans-serif;
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.2rem 1rem;
+      background-color: #111;
+      height: 75px;
+      box-sizing: border-box;
+    }
+
+    h1 {
+      font-family: 'Bebas Neue', cursive;
+      font-size: 2.5rem;
+      color: red;
+    }
+
+    nav a {
+      margin: 0 1rem;
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .hero {
+      position: relative;
+      height: 550px;
+      background-color: #000;
+      overflow: hidden;
+    }
+
+    .slides {
+      display: flex;
+      transition: transform 0.5s ease-in-out;
+      width: 100%;
+      height: 100%;
+    }
+
+    .slide {
+      min-width: 100%;
+      background-size: cover;
+      background-position: center;
+      background-image: url('https://via.placeholder.com/1200x400?text=Happy+Birthday');
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 10rem 2rem 2rem;
+      box-sizing: border-box;
+    }
+
+    .slide h2 {
+      font-size: 3rem;
+      color: red;
+      font-family: 'Bebas Neue', cursive;
+      text-shadow: 2px 2px 4px #000;
+      margin: 0.5rem 0;
+    }
+
+    .slide p {
+      font-size: 1.3rem;
+      color: white;
+      text-shadow: 1px 1px 2px #000;
+      margin: 0.5rem 0;
+    }
+
+    .slide a {
+      margin-top: 1rem;
+      display: inline-block;
+      background-color: red;
+      color: white;
+      text-decoration: none;
+      padding: 0.6rem 1.2rem;
+      border-radius: 5px;
+      font-weight: bold;
+      transition: background-color 0.3s ease;
+    }
+
+    .slide a:hover {
+      background-color: #ff3c3c;
+    }
+
+    .nav-buttons {
+      position: absolute;
+      top: 50%;
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      transform: translateY(-50%);
+      padding: 0 3rem;
+      box-sizing: border-box;
+    }
+
+    .nav-buttons button {
+      background-color: rgba(0,0,0,0.6);
+      color: white;
+      border: none;
+      padding: 0.5rem 1rem;
+      font-size: 1.2rem;
+      cursor: pointer;
+      border-radius: 4px;
+    }
+
+    .section {
+      padding: 2rem;
+    }
+
+    .section h3 {
+      border-left: 5px solid red;
+      padding-left: 1rem;
+      margin-bottom: 1rem;
+      font-family: 'Bebas Neue', cursive;
+      font-size: 2rem;
+    }
+
+    .video-grid,
+    .photo-grid {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .video-grid iframe,
+    .photo-grid img {
+      width: 300px;
+      height: 170px;
+      border-radius: 8px;
+      object-fit: cover;
+    }
+
+    .lightboxOverlay,
+    .lightbox {
+      z-index: 99999 !important;
+    }
+
+    .lightbox img {
+      object-fit: contain !important;
+      max-height: 80vh;
+      width: auto;
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    ul li {
+      background: #222;
+      padding: 1rem;
+      margin-bottom: 1rem;
+      border-radius: 5px;
+    }
+    
+    .wish-card {
+      background-color: #222;
+      padding: 1.5rem;
+      margin-bottom: 1.5rem;
+      border-radius: 8px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+    }
+
+    footer {
+      text-align: center;
+      padding: 2rem;
+      background-color: #111;
+      font-size: 0.9rem;
+      color: #ccc;
+    }
+
+    #password-prompt {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.9);
+      color: white;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      z-index: 9999;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>NetWish</h1>
+    <nav>
+      <a href="#video">Film</a>
+      <a href="#gallery">Gallery</a>
+      <a href="#messages">Messages</a>
+      <a href="#" onclick="showPrivate(event)">Private</a>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <div class="slider">
+      <div class="slides">
+        <div class="slide active">
+          <h2>Happy Birthday, Cala🎉</h2>
+          <p>Thank you for staying this far (you're old now :p HAHA) Im so Proud of you🤍</p>
+          <p>I hope you have a wonderful birthday filled with love, laughter, and all the good things in life.</p>
+          <p>I loveee youuu sooo muchh my love🤍</p>
+          <a href="#video">Check this out</a>
+        </div>
+        <div class="slide">
+          <h2>Let's Unlock More Memories Together🎥</h2>
+          <p>Hey birthday girl, i've really enjoyed the moments of us together.</p>
+          <p>On your special day, i want to share the memories that make me feel so grateful to have you in my life.</p>
+          <p>Happy Birthday, Calaku. Let's fill up our Google Drive and keep making new emails! :p</p>
+          <a href="#gallery">Step Into Our Memories</a>
+        </div>
+        <div class="slide">
+          <h2>Everyone loves you, Cala!💌</h2>
+          <p>Happy, happy, happy birthday to my special person!</p>
+          <p>Here's a collection of messages from everyone who adores you. You're loved by me (ofc) and so many others. </p>
+          <p>Soo please be happy, Cala!</p>
+          <a href="#messages">See Who Loves You</a>
+        </div>
+        <div class="slide">
+          <h2>🕸️This one is for you only🕸️</h2>
+          <p>Hi Hi Hi! Are you ready to open this? I'm kinda nervous tbh 🥴</p>
+          <P>AHAHAHA HOPE YOU LIKE IT YAAA!! ONCE AGAIN HAPPY BIRTHDAY CALAAA!</P>
+          <P>I LOVEE YOUU SOO SOOO MUCHHH🤍🤍🤍</P>
+          <a href="#" onclick="showPrivate(event)">Let's Jump In!</a>
+        </div>        
+      </div>
+    </div>
+    <div class="nav-buttons">
+      <button onclick="changeSlide(-1)">&#10094;</button>
+      <button onclick="changeSlide(1)">&#10095;</button>
+    </div>
+  </section>
+
+  <section id="video" class="section">
+    <h3>Lights, Camera, Birthday!</h3>
+    <p>From my heart to the screen.. just for you.</p>
+    <p>Happy birthday, bb!</p>
+    <br>
+    <div class="video-grid">
+      <video controls width="300" height="170">
+      <source src="assets/vid.mp4" type="video/mp4">
+      Your browser does not support the video tag.
+      </video>
+   </div>
+  </section>
+
+
+  <section id="gallery" class="section">
+    <h3>Through the Lens of Love</h3>
+    <p>Each of these photos reminds me how lucky i am to have you.</p>
+  <div class="photo-grid">
+    <a href="assets/1.JPG" data-lightbox="gallery" data-title="Foto 1"><img src="assets/1.JPG" alt="Foto 1"></a>
+    <a href="assets/2.jpg" data-lightbox="gallery" data-title="Foto 2"><img src="assets/2.jpg" alt="Foto 2"></a>
+    <a href="assets/3.jpeg" data-lightbox="gallery" data-title="Foto 3"><img src="assets/3.jpeg" alt="Foto 3"></a>
+    <a href="assets/4.jpg" data-lightbox="gallery" data-title="Foto 4"><img src="assets/4.jpg" alt="Foto 4"></a>
+    <a href="assets/5.jpg" data-lightbox="gallery" data-title="Foto 5"><img src="assets/5.jpg" alt="Foto 5"></a>
+    <a href="assets/6.jpg" data-lightbox="gallery" data-title="Foto 6"><img src="assets/6.jpg" alt="Foto 6"></a>
+    <a href="assets/7.jpg" data-lightbox="gallery" data-title="Foto 7"><img src="assets/7.jpg" alt="Foto 7"></a>
+    <a href="assets/8.jpg" data-lightbox="gallery" data-title="Foto 8"><img src="assets/8.jpg" alt="Foto 8"></a>
+    <a href="assets/9.jpg" data-lightbox="gallery" data-title="Foto 9"><img src="assets/9.jpg" alt="Foto 9"></a>
+    <a href="assets/10.JPG" data-lightbox="gallery" data-title="Foto 10"><img src="assets/10.JPG" alt="Foto 10"></a>
+    <a href="assets/11.jpg" data-lightbox="gallery" data-title="Foto 11"><img src="assets/11.jpg" alt="Foto 11"></a>
+    <a href="assets/12.jpg" data-lightbox="gallery" data-title="Foto 12"><img src="assets/12.jpg" alt="Foto 12"></a>
+    <a href="assets/13.JPG" data-lightbox="gallery" data-title="Foto 13"><img src="assets/13.JPG" alt="Foto 13"></a>
+    <a href="assets/14.jpg" data-lightbox="gallery" data-title="Foto 14"><img src="assets/14.jpg" alt="Foto 14"></a>
+    <a href="assets/15.JPG" data-lightbox="gallery" data-title="Foto 15"><img src="assets/15.JPG" alt="Foto 15"></a>
+    <a href="assets/16.PNG" data-lightbox="gallery" data-title="Foto 16"><img src="assets/16.PNG" alt="Foto 16"></a>
+    <a href="assets/17.JPG" data-lightbox="gallery" data-title="Foto 17"><img src="assets/17.JPG" alt="Foto 17"></a>
+    <a href="assets/18.jpg" data-lightbox="gallery" data-title="Foto 18"><img src="assets/18.jpg" alt="Foto 18"></a>
+    <a href="assets/19.jpg" data-lightbox="gallery" data-title="Foto 19"><img src="assets/19.jpg" alt="Foto 19"></a>
+    <a href="assets/20.JPG" data-lightbox="gallery" data-title="Foto 20"><img src="assets/20.JPG" alt="Foto 20"></a>
+    <a href="assets/21.jpg" data-lightbox="gallery" data-title="Foto 21"><img src="assets/21.jpg" alt="Foto 21"></a>
+  </div>
+
+  </section>
+
+  <section id="messages" class="section">
+    <h3>Whispers of Love</h3>
+    <p>A little piece of our hearts, wrapped in words, just for you.</p>
+    <div class="wish-card">
+    <p>
+    HAPPY BRITHDAY CALAAAA!!!🤍</p>
+    <p>semoga panjang umur, sehat selalu makin banyak rezeki nya, yang terbaik untuk cala!!!✨️✨️✨️
+    </p>
+    </div>
+
+    <div class="wish-card">
+    <p>
+     happy birthday ya 🫵🏻, KO MAU SI SAMA DINDA🫵🏻🫵🏻🫵🏻🫵🏻🫵🏻🫵🏻🫵🏻  disantet ya luuuuuuuuu aduhhhh bisa bisanya ada yg mau sm dinda😭😭😭
+    </p>
+    <p>
+      semogaa apa yg dihajatkan segera terkabul dan dimudahkan segala urusannya ya, dan semoga gakena rayuan dinda genit lagi yah
+    </p>
+    </div>
+
+    <div class="wish-card">
+    <p>
+      Hai Ra, terima kasih sudah hadir di hidup juki dan kenal baik sama gue huahaha. Lo orang baik dan selalu effortful!! Parahhh. Lo udah ngebuat juki jadi balik ke dirinya sendiri yang ceria, yang bijak dan dewasa. Terima kasih yaa, Ra. Terima kasih juga udah ngajarin dan ngasih pengalaman yang sebelumnya belum pernah gue lakuin di hidup ini. Gue harap lo bisa berdamai dengan apa yang sudah terjadi yaa Ra. Terutama atas apa yang udah dilakuin dan segala perkataan si anak ajg itu yaa wakakak lagi lagi bahas dia yaa?? NAJIS SIH 🤌🏻🤢 
+    </p>
+    <p>
+      Ra, doa dari gue buat lo semoga lo selalu dikelilingi dengan segala hal hal baik, selalu dilancarkan segala urusan, rezeki, karir, dan apapun yang lo kerjakan. Semoga selalu dilindungi, selalu diberi kesehatan jiwa raga, dan bahagia tanpa jeda. Aamiin.. be happy yaa Ra 🙆🏻💗
+    </p>
+    </div>
+
+    <div class="wish-card">
+    <p>
+      Semoga makin sehat lahir batin Dan semoga mata batin kamu terbuka karna adinda nimas itu gak kerenn!!
+    </p>
+    </div>
+
+     <div class="wish-card">
+    <p>
+      Happy birthday Cala wish you all the best. Semoga di ulang tahun yang ke-23 ini semua harapan yang diinginkan terwujud. Hidup semakin baik semakin bahagia semakin sukses yaw Aamiin
+    </p>
+    </div>   
+
+    <div class="wish-card">
+    <p>
+      Hello araa 👋 kata dinduy tudey kamu ultah ya? Happy bestdayy🥳 semoga yg terbaik dari yang terbaik dateng ya ke kamuu, dan apa yg kamu pengen bisa terlaksana secepatnya, sehat teruss, bahagia selaluu, dimudahkan segala kesulitan, dilancarkan segala urusan. 
+    </p>
+    <p>
+      Pstt kado🎁minta dinduy yahh👌bay bayy
+    </p>
+    </p>
+    </div> 
+
+    <div class="wish-card">
+    <p>
+      happy birthday calaa! semoga apapun yg diimpikan akan terwujud yaa, panjang umur, sehat selalu, murah rezeki, selalu diberi kebahagiaan, dan semoga segala urusan km diberi kelancaran dan kemudahan, semoga semesta turut mengaminkan dan mendatangkan hal-hal baik buat calaa, have a great birthday!🥳
+    </p>
+    </div> 
+
+    <div class="wish-card">
+    <p>
+      Hai cala, walaupun kita belum pernah kenalan, aku cuma mau bilang happy birthday for u cala! Semoga hidupmu penuh kebahagiaan🎉🙌
+    </p>
+    </div> 
+
+    <div class="wish-card">
+    <p>
+      HAPPY BIRTHDAYYYY!! semoga selalu dikelilingi kebaikan dan selalu membawa kebaikan juga buat org sekitar. enjoy your special day to the fullest, ara!!
+    </p>
+    </div> 
+
+    <div class="wish-card">
+    <p>
+      Selamat ulang tahun cala, semoga semakin banyak waktu dan kesempatan untuk bermain
+    </p>
+    <p>Hope you enjoy in your life</p>
+    <p>
+      Allah bless you 🤲🏻
+    </p>
+    </div> 
+
+    <div class="wish-card">
+    <p>
+      selamat ulang tahun, anak baik
+    </p>
+    <p>
+      semoga dengan bertambahnya umur, bertambah juga kebahagiaan dan keberkahan dalam hidup cala
+    </p>
+    <p>
+      semangat menyambut tahun yang baru di hidupnya cala. jalannya cala masih panjang, always fill it with happiness yaa
+    </p>
+    <p>
+      semoga cala selalu dikelilingi orang-orang yang sayang cala
+    </p>
+    <p>
+      aamiin
+    </p>    
+    </div> 
+
+    <div class="wish-card">
+    <p>
+      Hi bb! Happyyyy birthdayy Cala cantikk, baik hatii dan cintakuuu 
+    </p>
+    <p>Semoga aku makin keren:p</p>
+    <p>
+      HAHA Be happy Cala, i love youuuu🫶
+    </p>
+    </div> 
+  </section>
+
+  
+
+  <section id="private" class="section" style="display:none;">
+    <h3>Just for you. Only you</h3>
+    <p>I lovee youu sooo muchh. Always!</p>
+    <p id="private-content" style="max-width: 600px; line-height: 1.6;"></p>
+    <video controls width="300" height="170">
+    <source src="assets/vid2.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+    </video>
+  </section>
+
+  <div id="password-prompt">
+    <h2>Enter Password</h2>
+    <input type="password" id="password-input" style="padding:0.5rem; font-size:1rem;">
+    <button onclick="checkPassword()" style="margin-top:1rem; padding:0.5rem 1rem; font-size:1rem; background:red; color:white; border:none; cursor:pointer;">Submit</button>
+    <p id="password-error" style="color:tomato; margin-top:1rem;"></p>
+
+
+  </div>
+
+  <footer>
+    &copy; 2025. With love, Moon.
+  </footer>
+
+  <script>
+    const slides = document.querySelectorAll(".slide");
+    const slidesContainer = document.querySelector(".slides");
+    let currentSlide = 0;
+
+    function changeSlide(direction) {
+      slides[currentSlide].classList.remove("active");
+      currentSlide = (currentSlide + direction + slides.length) % slides.length;
+      slides[currentSlide].classList.add("active");
+      slidesContainer.style.transform = `translateX(-${currentSlide * 100}%)`;
+    }
+
+    setInterval(() => {
+      changeSlide(1);
+    }, 10000);
+
+    function showPrivate(e) {
+      e.preventDefault();
+      const promptBox = document.getElementById('password-prompt');
+      promptBox.style.display = 'flex';
+    }
+
+    function checkPassword() {
+      const input = document.getElementById('password-input').value;
+      const error = document.getElementById('password-error');
+      if (input === 'spidey28') {
+        document.getElementById('password-prompt').style.display = 'none';
+        document.getElementById('private').style.display = 'block';
+        document.getElementById('private-content').innerText = 'Once again, happy birthday Calaku!';
+        document.getElementById('private').scrollIntoView({behavior: 'smooth'});
+      } else {
+        error.textContent = 'Wrong password. Try again.';
+      }
+    }
+  </script>
+<script src="https://cdn.jsdelivr.net/npm/lightbox2@2/dist/js/lightbox.min.js"></script>
+<script>
+  lightbox.option({
+    'resizeDuration': 200,
+    'wrapAround': true,
+    'fadeDuration': 300,
+    'imageFadeDuration': 300
+  });
+</script>
+</body>
+</html>
